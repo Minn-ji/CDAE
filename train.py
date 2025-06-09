@@ -18,12 +18,12 @@ model.summary()
 
 # train
 history = model.fit(x=[train_x, train_x_users], y=train_x,
-                    batch_size=128, epochs=1000, verbose=1,
+                    batch_size=64, epochs=600, verbose=1,
                     validation_data=([test_x, test_x_users], test_x))
 
 # predict
 pred = model.predict(x=[train_x, numpy.array(train_users, dtype=numpy.int32).reshape(len(train_users), 1)])
-pred = pred * (train_x == 0) # remove watched items from predictions
+pred = pred * (train_x == 0)  # remove watched items from predictions
 pred = numpy.argsort(pred)
 
 for n in range(1, 11):
