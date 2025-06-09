@@ -18,8 +18,8 @@ model.summary()
 
 # train
 history = model.fit(x=[train_x, train_x_users], y=train_x,
-                    batch_size=128, nb_epoch=1000, verbose=1,
-                    validation_data=[[test_x, test_x_users], test_x])
+                    batch_size=128, epochs=1000, verbose=1,
+                    validation_data=([test_x, test_x_users], test_x))
 
 # predict
 pred = model.predict(x=[train_x, numpy.array(train_users, dtype=numpy.int32).reshape(len(train_users), 1)])
